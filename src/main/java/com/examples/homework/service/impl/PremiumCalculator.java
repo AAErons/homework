@@ -6,7 +6,7 @@ import com.examples.homework.service.Calculator;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PremiumCalulator implements Calculator {
+public class PremiumCalculator implements Calculator {
     @Override
     public PolicyResponse calculate(PolicyRequest request) {
         //TODO create logic to calculate policy
