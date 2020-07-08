@@ -1,13 +1,13 @@
 package com.examples.homework.controller.api;
 
 public class PolicyResponse {
-    float premium;
+    Double premium;
 
-    public float getPremium() {
+    public Double getPremium() {
         return premium;
     }
 
-    public void setPremium(float premium) {
+    public void setPremium(Double premium) {
         this.premium = premium;
     }
 }

@@ -28,7 +28,8 @@ public class Policy {
 
     public List<PolicyObject> getPolicyObjects() {
         if(policyObjects == null){
-            return new ArrayList<>();
+            policyObjects = new ArrayList<>();
+            return policyObjects;
         }
         return policyObjects;
     }
