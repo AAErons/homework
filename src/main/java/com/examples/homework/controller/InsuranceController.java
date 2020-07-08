@@ -20,7 +20,7 @@ public class InsuranceController {
     @PostMapping(value = "/calculatepremium",produces = "application/json")
     public ResponseEntity<PolicyResponse> calculatePremium(@RequestBody PolicyRequest request) {
         //TODO
-        //Validate request
+        //Validate request validate that policy have atleast 1 object
 
         PolicyResponse response = calculator.calculate(request);
 
