@@ -9,13 +9,25 @@ import com.examples.homework.service.Calculator;
 import com.examples.homework.strategies.impl.TheftStrategy;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 
 @Service
 public class PremiumCalculator implements Calculator {
 
+    private Map<String, Function<String, PolicySubObject>> allStrategies;
+
+    public void Setup(){
+        allStrategies = new HashMap<>();
+        //allStrategies.put(STIS_CREATE_NEW_UPDATE.name(), trimProcess::process);
+        //allStrategies.put(STIS_UPDATE_OTA.name(), trimProcess::processOta);
+    }
 
     @Override
     public PolicyResponse calculate(PolicyRequest request) {
@@ -29,12 +41,15 @@ public class PremiumCalculator implements Calculator {
                         .flatMap(i -> i.getPolicySubObjects().stream())
                         .collect(Collectors.toList());
 
-        Strategy strategy = new FireStrategy();
-        Double premiumFire = strategy.calculateValue(policySubObjects);
-        strategy = new TheftStrategy();
-        Double premiumTheft = strategy.calculateValue(policySubObjects);
+        BigDecimal premium = BigDecimal.ZERO;
 
-        response.setPremium(premiumFire + premiumTheft);
+
+        Strategy strategy = new FireStrategy();
+        BigDecimal premiumFire = strategy.calculateValue(policySubObjects);
+        strategy = new TheftStrategy();
+        BigDecimal premiumTheft = strategy.calculateValue(policySubObjects);
+
+        response.setPremium(premiumFire.add(premiumTheft));
 
         return response;
     }

@@ -2,10 +2,12 @@ package com.examples.homework.controller.api;
 
 import com.examples.homework.enums.RiskType;
 
+import java.math.BigDecimal;
+
 
 public class PolicySubObject {
     String subObjectName;
-    Double sumInsured;
+    BigDecimal sumInsured;
     RiskType riskType;
 
     public String getSubObjectName() {
@@ -16,11 +18,11 @@ public class PolicySubObject {
         this.subObjectName = subObjectName;
     }
 
-    public Double getSumInsured() {
+    public BigDecimal getSumInsured() {
         return sumInsured;
     }
 
-    public void setSumInsured(Double sumInsured) {
+    public void setSumInsured(BigDecimal sumInsured) {
         this.sumInsured = sumInsured;
     }
 

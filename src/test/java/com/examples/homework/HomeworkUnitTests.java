@@ -11,8 +11,6 @@ class HomeworkUnitTests {
 
     @Test
     public void calculatePremiumTest1() {
-        Double expectedPremium = 2.28;
-
         PremiumCalculator calculator = new PremiumCalculator();
 
         PolicyRequest request = new PolicyRequest();
@@ -40,7 +38,7 @@ class HomeworkUnitTests {
         PolicyResponse response = calculator.calculate(request);
 
 
-        assertEquals(expectedPremium, response.getPremium());
+        assertEquals(2.28, response.getPremium());
     }
 
     @Test
